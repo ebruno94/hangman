@@ -1,0 +1,14 @@
+@{
+  Layout = "_Layout";
+}
+
+<h2>@Model.GetName(), enter a word for your opponent to guess.</h2>
+<h1>Other player, look away</h1>
+
+<form action="/Game/Create" method="post">
+  <div class="form-group">
+    <label for="currentWord"></label>
+    <input type="text" class="form-control" name="currentWord" id="currentWord">
+  </div>
+  <button type="submit" class="btn">Start Round!</button>
+</form>

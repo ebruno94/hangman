@@ -1,0 +1,8 @@
+/Users/Guest/Desktop/hangman/bin/Debug/netcoreapp1.1/hangman.deps.json
+/Users/Guest/Desktop/hangman/bin/Debug/netcoreapp1.1/hangman.runtimeconfig.json
+/Users/Guest/Desktop/hangman/bin/Debug/netcoreapp1.1/hangman.runtimeconfig.dev.json
+/Users/Guest/Desktop/hangman/obj/Debug/netcoreapp1.1/hangman.AssemblyInfo.cs
+/Users/Guest/Desktop/hangman/bin/Debug/netcoreapp1.1/hangman.dll
+/Users/Guest/Desktop/hangman/bin/Debug/netcoreapp1.1/hangman.pdb
+/Users/Guest/Desktop/hangman/obj/Debug/netcoreapp1.1/hangman.dll
+/Users/Guest/Desktop/hangman/obj/Debug/netcoreapp1.1/hangman.pdb
