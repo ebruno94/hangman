@@ -89,7 +89,7 @@ namespace HangmanProject.Models
 
     public static void SetOldDashString(List<string> oldDashString)
     {
-      _oldDashString.Clear(); 
+      _oldDashString.Clear();
       foreach (string dash in oldDashString)
       {
         _oldDashString.Add(dash);
@@ -133,18 +133,24 @@ namespace HangmanProject.Models
 
     public static bool IfIncorrectGuess()
     {
-      Console.WriteLine(Game._oldDashString.Count);
-      Console.WriteLine(Game._dashString.Count);
+      foreach (string character in Game._oldDashString)
+      {
+        Console.WriteLine(character);
+      }
+      foreach (string character in Game._dashString)
+      {
+        Console.WriteLine(character);
+      }
       for (int i = 0; i < Game._dashString.Count; i++)
       {
-        if (Game._oldDashString[i].Equals(Game._dashString[i]))
+        if (!Game._oldDashString[i].Equals(Game._dashString[i]))
         {
-          Console.WriteLine("I am the same character!");
-          return true;
+          Console.WriteLine("I found a different character!");
+          return false;
         }
       }
-      Console.WriteLine("All Characters are different");
-      return false;
+      Console.WriteLine("All Characters are the same");
+      return true;
     }
 
     public static void AddStrike(bool flag)

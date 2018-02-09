@@ -6,24 +6,24 @@
 <div class="container" id="gameContainer">
   <div class="row" id="playerDisplayRow">
     <div class="col-md-12">
-      <h3> @Game.GetCurrentPlayer().GetName() 's Turn</h3>
+      <h3 id="playerDisplay"> @Game.GetCurrentPlayer().GetName()&#039;s Turn</h3>
     </div>
   </div>
   <div class="row" id="scoreHangmanRow">
     <div class="col-md-3 scoreColumn">
-      <h4>@Game.GetPlayers()[0].GetName()</h4><br>
+      <h4>@Game.GetPlayers()[0].GetName()</h4><hr>
       <h4>@Game.GetPlayers()[0].GetScore()</h4>
     </div>
     <div class="col-md-6 hangmanColumn">
-      <img src="~/img/hangman@(Game.GetNumStrike()).png" width="600" height="400">
+      <img src="~/img/hangman@(Game.GetNumStrike()).png" width="400" height="300">
     </div>
     <div class="col-md-3 scoreColumn">
-      <h4>@Game.GetPlayers()[1].GetName()</h4><br>
+      <h4>@Game.GetPlayers()[1].GetName()</h4><hr>
       <h4>@Game.GetPlayers()[1].GetScore()</h4>
     </div>
   </div>
   <div class="row" id="dashRow">
-    <div class="col-md-12">
+    <div class="col-md-12" id="dashContainer">
     @foreach (var character in Game.GetDashString())
     {
       <span class="dashCharacter">@character</span>
@@ -31,13 +31,21 @@
     </div>
   </div>
   <div class="row" id="newGuessForm">
-    <form action="/Guess/Create" method="post">
-      <div class="form-group">
-        <label for="newGuess">Type in a character that you would like to guess: </label>
-        <input name="newGuess" id="newGuess" type="text">
-      </div>
-      <button type="submit" class="btn">Submit Guess!</button>
-    </form>
+    <div class="col-md-12">
+      <form action="/Guess/Create" method="post">
+        <div class="form-group">
+          <label for="newGuess">Type in a character that you would like to guess: </label>
+          <input name="newGuess" id="newGuess" type="text">
+        </div>
+        <p>Your Guesses So Far:
+          @foreach (var character in Game.GetGuesses())
+          {
+            @character <span>, </span>;
+          }
+        </p>
+        <button type="submit" class="btn">Submit Guess!</button>
+      </form>
+    </div>
   </div>
   <div class="row" id="winOrLose">
     <div class="col-md-12">
@@ -47,7 +55,7 @@
       }
       @if (Game.GetLose())
       {
-        <h2>You Lose! KYS</h2>
+        <h2>You Lose!</h2>
       }
     </div>
   </div>

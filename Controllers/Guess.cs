@@ -14,15 +14,23 @@ namespace HangmanProject.Controllers
       myGuess.SetGuessChar(Request.Form["newGuess"]);
       myGuess.Save();
       Game.SetGuesses(Guess.GetGuesses());
-      if (Game.GetDashString().Count != 0 && Game.GetOldDashString().Count != 0)
+      Game.SetDashString();
+      if (Game.GetOldDashString().Count != 0)
       {
         Game.AddStrike(Game.IfIncorrectGuess());
       }
-      if (Game.GetDashString().Count != 0)
+      else
       {
-        Game.SetOldDashString(Game.GetDashString());
+        int index = Game.GetDashString().Count;
+        List<string> tempList = new List<string>();
+        for (int i = 0; i < index; i ++)
+        {
+          tempList.Add("_");
+        }
+        Game.SetOldDashString(tempList);
+        Game.AddStrike(Game.IfIncorrectGuess());
       }
-      Game.SetDashString();
+      Game.SetOldDashString(Game.GetDashString());
       Game.SetWin();
       Game.SetLose();
       return View("../Game/Info");
